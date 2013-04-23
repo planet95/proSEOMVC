@@ -10,16 +10,16 @@ namespace proSEOMVC.Models
         /// <summary>
         /// The OAuth2.0 Client ID of your project.
         /// </summary>
-       
+
       
-        public static readonly string CLIENT_ID = "nummmmmmbers.apps.googleusercontent.com";
+        public static readonly string CLIENT_ID = "CLIENTID.apps.googleusercontent.com";
         
         /// <summary>
         /// The OAuth2.0 Client secret of your project.
         /// </summary>
-        public static readonly string CLIENT_SECRET = "shhhhhh";
-        public static readonly string ServiceAccountId = "nummmmmmbers.apps.googleusercontent.com";
-        public static readonly string ServiceAccountUser = "nummmmmmbers@developer.gserviceaccount.com";
+        public static readonly string CLIENT_SECRET = "CLIENT_SECRET";
+        public static readonly string ServiceAccountId = "CLIENTID.apps.googleusercontent.com";
+        public static readonly string ServiceAccountUser = "CLIENTID@developer.gserviceaccount.com";
 
         /// <summary>
         /// The OAuth2.0 scopes required by your project.
