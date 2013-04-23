@@ -1,0 +1,68 @@
+﻿@model proSEOMVC.Models.UserProfile 
+@{
+    ViewBag.Title = "Google Profiles";
+}
+    @section scripts {
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/knockout")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/app")
+ 
+    }
+        <div class="profilecontainer">
+<header>
+    <h1>@ViewBag.Title</h1>
+</header>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">My SEO Reports</a>
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            @Html.DisplayFor(model => model.email)
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Profiles/Detail/" target="_blank">Profile</a></li>
+                        </ul>
+                    </li>
+                </ul>          
+            </div>
+        </div>
+    </div>
+    <div id="main-content"><br/>
+        <select class="profileSelect" multiple="multiple" data-bind="selectedOptions: selectedOptions" >
+            <!-- ko foreach: profiles -->
+            <option data-bind="text: websiteurl, value: id"></option>
+            <!-- /ko -->
+        </select>
+        <br/>
+        <input  id="startDate" />
+        <input id="endDate"/>
+        <button id="btnSubmit" data-bind="click: function(data) { getAnalyticsReport(selectedOptions(),$('option').filter(':selected').html(),$('#startDate').val(),$('#endDate').val()) }">
+            Report
+        </button>
+        <button id="btnSubmit2" data-bind="click: function(data) { getReport(selectedOptions()) }">
+            Data
+        </button>
+        <div data-bind="text: selectedOptions"/>
+        <form id="ProfileSelect" method="POST" action="/Profiles/Detail">
+            <input id="profileID" name="profileID" type="hidden"/>
+        </form>
+    
+    </div>
+</div>
+</div>
+<div id="report-content"></div>
+
+<script type="text/javascript">
+    var data = @Html.Raw(Json.Encode(Model));
+</script>
+
+

@@ -1,0 +1,56 @@
+﻿@using System.Web.Optimization
+@using BootstrapSupport
+@using NavigationRoutes
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @RenderSection("head", required: false)
+        @Html.Partial("_html5shiv")
+        @Styles.Render("~/Content/css")
+        <link rel="stylesheet" href="~/Content/css/print.css" type="text/css" media="print" />
+        @* favicons and touch icons go here *@
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+            <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/cufon/1.09i/cufon-yui.js"></script>
+<script type="text/javascript" src="~/Content/fonts/Proxima_Nova_Rg_700.font.js"></script>
+<script type="text/javascript">
+    Cufon.replace('h1, h2, h3, h4, h5, h6', { fontFamily: 'Proxima Nova Rg' });
+</script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#" title="">Application Name</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            @Html.Navigation()
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="container">
+            @Html.Partial("_alerts")
+            @Html.Partial("_validationSummary")
+            @RenderBody()   
+            <hr>
+            <footer>
+                <p>&copy; Company @System.DateTime.Now.ToString("yyyy")</p>
+            </footer> 
+        </div>
+        
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>
+

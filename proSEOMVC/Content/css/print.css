@@ -1,0 +1,461 @@
+﻿
+.profilecontainer {
+    display: none;
+}
+body, input, button {
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-size: 1.2em;
+}
+.navbar .navbar-inverse .navbar-fixed-top {
+
+    display: none;
+}
+
+head {
+    display: none;
+}
+body {
+    background-color: #fff;
+    color: #333;
+    /*width: 980px; /*Remove this to make it full screen*/
+    margin: 1em auto;
+}
+
+.pie_chart {
+    height: 50px;
+    width: 100px;
+
+}
+
+button, input[type=submit] {
+    border: 1px solid #dedede;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+select[multiple].profileSelect {
+    width: 65%;
+    height: 150px;
+    line-height: 45px;
+}
+#profileList {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+.data_title {
+    margin: 5px 0 25px 0;
+}
+header {
+    margin-top: 50px;
+}
+
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+.subnav {
+	margin-bottom: 0px;
+}
+
+.subnav .nav > li > a {
+	color: #333;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.subnav .nav > li > a:hover {
+	background-color: #F5F5F5;
+	color: #333;
+}
+.dropdown-menu span {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: #333333;
+  white-space: nowrap;
+}
+
+@charset "utf-8";
+/* CSS Document */
+
+/* -------------------------   global */
+
+    /**resets**/
+
+body {	
+	font-family: 'DroidSansRegular', Tahoma, Geneva, sans-serif;	
+	font-size: 16px;
+	color: #231F20;
+	/*background: #eee;*/
+}
+
+body, div {
+	margin: 0px;
+	padding: 0px;	
+}
+
+    /**text**/
+
+h1 {
+	font-size: 67px;
+	color: #070707;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 53px;
+	color: #070707;
+	text-transform: uppercase;
+}
+
+h3 { 
+	font-size: 23px;
+	color: #262323;
+	text-transform: uppercase;
+}
+
+h4 { 
+	font-size: 26px;
+	color: #009ddc;
+}
+
+h5 { 
+	font-size: 20px;
+	margin: 3px 0px auto 0px;
+	text-transform: uppercase;
+}
+
+h6 {
+	font-size: 16px;
+	color: #4c4d4f;
+	margin: 5px 0px;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 16px;
+	color: #231F20;	font-family: 'DroidSansRegular', Tahoma, Geneva, sans-serif;	} 
+
+a {
+	color: #009ddc;
+	font-weight: normal;
+}
+
+a:hover {
+	color: #2cb9f2;
+	font-weight: normal;
+}
+
+    /**misc**/
+
+hr {
+	border: 0px;
+	background-color: #fff;
+	color:#fff;	
+	border-top: 1px dashed #7f7f7e;
+}
+
+ul {
+	font-size: 17px;	font-family: 'DroidSansRegular', Tahoma, Geneva, sans-serif;	}
+
+.clear {
+	clear: both;	
+}
+
+table {	font-family: 'DroidSansRegular', Tahoma, Geneva, sans-serif; 	}
+
+
+
+/* -------------------------   structure */
+
+#wrapper {
+	width: 850px;
+	padding: 60px 74px 20px 74px;
+	margin: 0 auto 30px auto;
+	background: #fff;
+}
+
+.condensed_wrapper {
+	width: 96%;
+	margin: 0 auto;	
+	background: #fff;
+}
+
+#logo {
+	float: left;	
+	text-align: justify;
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+#logo h1 {
+    font-size: 55px;
+    margin: 10px 0 0 0;
+}
+
+#logo h2 {
+    margin: 0; 
+     font-size: 45px;
+	margin-top: -2px;	
+}
+
+
+#description_top {
+	float: right;	
+	width: 490px;
+	text-align: justify;
+}
+
+#description_top h3 {
+	margin: 7px 0px 11px 0;
+	text-align: center;
+}
+
+#description_top p {
+	margin:7px 0px;
+	line-height: 22px;
+	text-align: justify;
+}
+
+    /**featured**/
+
+.featured {
+	padding: 15px 25px;
+	background-color: #edf6fd;
+	border: 1px solid #b3e0f3;
+	margin-top: 25px;
+}
+
+.featured h6 {
+	text-transform: uppercase;	
+}
+
+.featured_bottom {
+	height: 15px;
+	width: 840px;
+	clear: both;
+}
+
+
+.pie_chart {
+	float: left;
+	padding: 10px 10px 0 10px;
+}
+
+.referring_cities {
+	float: right;	
+	padding: 22px 10px 0 0;
+	width: 370px;
+}
+
+.referring_cities h6 {	
+}
+
+    /**ribbons**/
+
+.r_wrapper_right {
+	width: 362px;
+	padding: 3px 12px;
+	float: right;
+	margin-top: 20px;
+	background:url('../images/ribbon.png') top left no-repeat;
+}
+
+.r_wrapper_left {
+	width: 372px;
+	padding: 3px 0px 3px 12px;
+	float: left;
+	margin-top: 20px;
+	background:url('../images/ribbon.png') top left no-repeat;
+}
+
+.r_wrapper_left h5, .r_wrapper_right h5 {
+	color: #fff;	
+}
+
+.r_wrapper_left2 {
+	width: 372px;
+	padding: 3px 0px 3px 12px;
+	float: left;
+	margin-top: 20px;
+	background:url('../images/ribbon.png') top left no-repeat;
+}
+
+.r_wrapper_left2 h5 {
+	color: #fff;	
+}
+
+.ribbon_box_content {
+	padding: 8px 0px 8px 20px;
+}
+
+.ribbon_box_content table {
+	border: 0px;	
+	font-size: 15px;
+	color: #231F20;
+    width: 100%;
+    
+}
+
+.ribbon_box_content .views {
+	color: #009ddc;
+	text-align: right;
+}
+
+.ribbon_box_content table.list_table, .ribbon_box_content table.list_table td  {
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+	color: #231F20;
+	
+}
+
+table.list_table {
+	width: 100%;	
+}
+
+.ribbon_box_content table.list_table .left {
+	margin: 0px;
+	padding: 2px 10px 5px 0px;
+}
+
+    /**graphs**/
+	
+#traffic {
+	clear: both;
+	margin: 25px 0px;
+	position: relative;
+}
+	
+.months {
+	position: absolute;
+	height: 36px;
+	top: -35px;
+	width: 100%;
+    margin-bottom:15px;
+}
+	
+.month_past {
+	float: left;	
+	padding: 6px 10px 10px;
+	color: #FFF;
+	background:url('../images/month_past.png') top left no-repeat;
+	font-size: 14px;
+	height: 26px;
+    z-index:1;
+}
+
+.month_future {
+	float: right;
+	padding: 6px 10px 10px;
+	color: #FFF;
+	background:url('../images/month_future.png') top right no-repeat;
+	font-size: 14px;
+	height: 26px;
+    z-index:1;
+}
+
+
+    /**footer**/
+	
+#footer {
+	width: 840px;
+	text-align: center;
+	margin-top: 25px;
+}
+	
+.footer_left {
+	width: 37%;
+	height:	5px;
+	background-color: #009ddc; 
+	float: left;
+	margin-top: 4px;
+}
+
+.footer_right {
+	width: 37%;
+	height:	5px;
+	background-color: #009ddc; 
+	float: right;
+	margin-top: 4px;
+}
+
+
+/* -------------------------    misc formatting */
+.pagename {
+    overflow:hidden;white-space:nowrap;
+}
+
+.bulletcol {
+    width:20px;
+}
+
+.blue {
+	color: #009ddc;
+}
+
+.url {
+	color: #009ddc;
+	font-size: 21px;	
+	margin: 12px 0px;
+	text-align: center;
+}
+
+#footer h4 {
+	margin: 0px;
+	font-size: 14px;
+	text-transform: uppercase;		
+}
+
+#footer a {
+	color: #009ddc;
+	text-decoration:  none;
+	font-weight: bold;	
+}
+
+.description {
+	font-size: 14px;	
+	margin: 22px 0px 15px 0px;
+}
+
+.break {
+	height: 25px;	
+	clear: both;
+}
+
+
+
+@font-face {
+ font-family: 'DroidSansRegular';
+ src: url('../fonts/DroidSans-webfont.eot');
+ src: url('../fonts/DroidSans-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/DroidSans-webfont.woff') format('woff'), url('../fonts/DroidSans-webfont.ttf') format('truetype'), url('../fonts/DroidSans-webfont.svg#DroidSansRegular') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+ @font-face {
+ font-family: 'DroidSansBold';
+ src: url('../fonts/DroidSans-Bold-webfont.eot');
+ src: url('../fonts/DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/DroidSans-Bold-webfont.woff') format('woff'), url('../fonts/DroidSans-Bold-webfont.ttf') format('truetype'), url('../fonts/DroidSans-Bold-webfont.svg#DroidSansBold') format('svg');
+ font-weight: normal;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+    body {
+        margin: .2em 0;
+    }
+
+    header {
+        text-align: center;
+    }
+}
