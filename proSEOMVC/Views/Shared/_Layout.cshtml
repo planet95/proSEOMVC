@@ -8,7 +8,7 @@
         <title>@ViewBag.Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         @RenderSection("head", required: false)
-        @Html.Partial("_html5shiv")
+@*        @Html.Partial("_html5shiv")*@
         @Styles.Render("~/Content/css")
         <link rel="stylesheet" href="~/Content/css/print.css" type="text/css" media="print" />
         @* favicons and touch icons go here *@
@@ -40,7 +40,7 @@
         <div class="container">
             @Html.Partial("_alerts")
             @Html.Partial("_validationSummary")
-            @RenderBody()   
+            @RenderBody()
             <hr>
             <footer>
                 <p>&copy; Company @System.DateTime.Now.ToString("yyyy")</p>

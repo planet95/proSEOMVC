@@ -1,5 +1,4 @@
-﻿using Microsoft.Web.Mvc; //nuget:mvc4futures
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -25,7 +24,7 @@ namespace NavigationRoutes
         {
             var newRoute = new NamedRoute(name, displayName, url, new MvcRouteHandler()) { Defaults = new RouteValueDictionary(defaults), Constraints = new RouteValueDictionary(constraints) };
             routes.Add(name, newRoute);
-            return new NavigationRouteBuilder(routes,newRoute);
+            return new NavigationRouteBuilder(routes, newRoute);
         }
 
         public static void MapNavigationRoute(this RouteCollection routes, string name, string displayName, string url,
@@ -47,27 +46,27 @@ namespace NavigationRoutes
         }
 
 
-        public static NavigationRouteBuilder MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action,string areaName="") where T : IController
+        public static NavigationRouteBuilder MapNavigationRoute<T>(this RouteCollection routes, string displayName, Expression<Func<T, ActionResult>> action, string areaName = "") where T : IController
         {
             var newRoute = new NamedRoute("", "", new MvcRouteHandler());
-            newRoute.ToDefaultAction(action,areaName);
+            newRoute.ToDefaultAction(action, areaName);
             newRoute.DisplayName = displayName;
             routes.Add(newRoute.Name, newRoute);
             return new NavigationRouteBuilder(routes, newRoute);
         }
 
-        public static NavigationRouteBuilder AddChildRoute<T>(this NavigationRouteBuilder builder, string DisplayText, Expression<Func<T, ActionResult>> action,string areaName="") where T : IController
+        public static NavigationRouteBuilder AddChildRoute<T>(this NavigationRouteBuilder builder, string DisplayText, Expression<Func<T, ActionResult>> action, string areaName = "") where T : IController
         {
             var childRoute = new NamedRoute("", "", new MvcRouteHandler());
-            childRoute.ToDefaultAction<T>(action,areaName);
+            childRoute.ToDefaultAction<T>(action, areaName);
             childRoute.DisplayName = DisplayText;
             childRoute.IsChild = true;
             builder._parent.Children.Add(childRoute);
-            builder._routes.Add(childRoute.Name,childRoute);
+            builder._routes.Add(childRoute.Name, childRoute);
             return builder;
         }
 
-        public static NamedRoute ToDefaultAction<T>(this NamedRoute route, Expression<Func<T, ActionResult>> action,string areaName) where T : IController
+        public static NamedRoute ToDefaultAction<T>(this NamedRoute route, Expression<Func<T, ActionResult>> action, string areaName) where T : IController
         {
             var body = action.Body as MethodCallExpression;
 
@@ -99,23 +98,23 @@ namespace NavigationRoutes
             }
 
             ;
-            route.Defaults = LinkBuilder.BuildParameterValuesFromExpression(body) ?? new RouteValueDictionary();
+           // route.Defaults = LinkBuilder.BuildParameterValuesFromExpression(body) ?? new RouteValueDictionary();
             foreach (var pair in route.Defaults.Where(x => x.Value == null).ToList())
                 route.Defaults.Remove(pair.Key);
 
             route.Defaults.Add("controller", controllerName);
             route.Defaults.Add("action", actionName);
 
-            route.Url= CreateUrl(actionName,controllerName,areaName);
+            route.Url = CreateUrl(actionName, controllerName, areaName);
             //TODO: Add area to route name
-            if(areaName=="")
+            if (areaName == "")
                 route.Name = "Navigation-" + controllerName + "-" + actionName;
             else
-                route.Name = "Navigation-" + areaName + "-"  + controllerName + "-" + actionName;
+                route.Name = "Navigation-" + areaName + "-" + controllerName + "-" + actionName;
 
-            if(route.DataTokens == null)
+            if (route.DataTokens == null)
                 route.DataTokens = new RouteValueDictionary();
-            route.DataTokens.Add("Namespaces", new string[] {typeof (T).Namespace});
+            route.DataTokens.Add("Namespaces", new string[] { typeof(T).Namespace });
             if (!string.IsNullOrEmpty(areaName))
             {
                 route.DataTokens.Add("area", areaName.ToLower());
@@ -124,10 +123,10 @@ namespace NavigationRoutes
             return route;
         }
 
-        public static string CreateUrl(string actionName, string controllerName,string areaName)
+        public static string CreateUrl(string actionName, string controllerName, string areaName)
         {
             var url = CreateUrl(actionName, controllerName);
-            if(areaName=="")        
+            if (areaName == "")
                 return url;
 
             return areaName.ToLower() + "/" + url;
@@ -156,7 +155,7 @@ namespace NavigationRoutes
     {
         public NavigationRouteBuilder(RouteCollection routes, NamedRoute parent)
         {
-           
+
             _routes = routes;
             _parent = parent;
         }

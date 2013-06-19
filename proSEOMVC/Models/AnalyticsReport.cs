@@ -4,11 +4,9 @@ using System.Linq;
 using System.Web;
 using Google;
 using Google.Apis.Authentication;
-using Google.Apis.Oauth2.v2;
-using Google.Apis.Oauth2.v2.Data;
 using Google.Apis.Analytics.v3;
 using Google.Apis.Analytics.v3.Data;
-using Newtonsoft.Json;
+using Google.Apis.Json;
 
 namespace proSEOMVC.Models
 {
@@ -36,17 +34,18 @@ namespace proSEOMVC.Models
         public List<int> totalVisitors { get; set; } 
         public List<string> keylist { get; set; }
         public List<int> daylist { get; set; }
+        public List<string> landingpagelist { get; set; }
         public List<string> reflist { get; set; }
         public List<string> pagelist { get; set; }
         public List<string> citylist { get; set; }
         public Dictionary<string, int> topRef { get { return (from source in reflist group source by source into g orderby g.Count() descending select new {g.Key, Count = g.Count() }).Take(5).ToDictionary(o => o.Key, o => o.Count); } }
-        public Dictionary<string, int> topPage
+        public Dictionary<string, int> topLandingPage
         {
             get
             {
 
-                return (from pages in pagelist
-                        group pages by pages
+                return (from source in landingpagelist
+                        group source by source
                         into p where p.Key != null && !p.Key.Contains("Error") orderby p.Count() descending
                         select new {Key = p.Key, Count = p.Count()}).Take(7).ToDictionary(o => o.Key, o => o.Count);
             }
@@ -69,7 +68,15 @@ namespace proSEOMVC.Models
                             select new { g.Key, Count = g.Count() }).Take(5).ToDictionary( o => o.Key, o => o.Count);
             }
         }
-
+        public Dictionary<string, int> topPages
+        {
+            get 
+            { return 
+                (from source in pagelist
+                 group source by source into g orderby g.Count()
+                 descending select new { g.Key, Count = g.Count() }).Take(5).ToDictionary(o => o.Key, o => o.Count); }
+        }
+       
        public string jsondayList {get
        {
            Dictionary<long, int> splineGraph = new Dictionary<long, int>();
@@ -101,7 +108,10 @@ namespace proSEOMVC.Models
                 splineGraph.Add(GetJavascriptTimestamp(date), plotPoint.Sum());
               // splineGraphz.Add(plotPoint.Key, plotPoint.Sum());
            }
-           return JsonConvert.SerializeObject(graphPoints2);
+           NewtonsoftJsonSerializer t = new NewtonsoftJsonSerializer();
+
+           return t.Serialize(graphPoints2);
+           
 
        }
        }

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Google;
-using Google.Apis.Authentication;
-using Google.Apis.Oauth2.v2;
-using Google.Apis.Oauth2.v2.Data;
-using Google.Apis.Analytics.v3;
 using Google.Apis.Analytics.v3.Data;
 
 namespace proSEOMVC.Models

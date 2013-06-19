@@ -6,14 +6,15 @@
 body {
     background-color: #fff;
     color: #333;
-    /*width: 980px; /*Remove this to make it full screen*/l
+    /*width: 980px; /*Remove this to make it full screen*/
     margin: 1em auto;
 }
 
 .pie_chart {
-    height: 50px;
-    width: 100px;
-
+    height: 150px;
+    width: 175px;
+    padding-left: 25px;
+    padding-top: 10px;
 }
 
 button, input[type=submit] {

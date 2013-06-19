@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -6,9 +6,9 @@ namespace NavigationRoutes
 {
     public class NamedRoute : Route
     {
-         string _name;
-         string _displayName;
-         List<NamedRoute> _childRoutes = new List<NamedRoute>();
+        string _name;
+        string _displayName;
+        List<NamedRoute> _childRoutes = new List<NamedRoute>();
 
         public NamedRoute(string name, string url, IRouteHandler routeHandler)
             : base(url, routeHandler)
@@ -38,7 +38,8 @@ namespace NavigationRoutes
             _displayName = displayName;
         }
 
-        public NamedRoute(string name, string displayName, string url, MvcRouteHandler routeHandler) : base(url, routeHandler)
+        public NamedRoute(string name, string displayName, string url, MvcRouteHandler routeHandler)
+            : base(url, routeHandler)
         {
             _name = name;
             _displayName = displayName;

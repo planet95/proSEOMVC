@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace proSEOMVC
+namespace SEOReports
 {
     public class FilterConfig
     {

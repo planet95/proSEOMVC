@@ -1,11 +1,14 @@
-﻿using System.Web;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 
-namespace proSEOMVC
+namespace SEOReports
 {
-    public class BundleConfig
+    public class BundleConfig 
     {
-        // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -25,7 +28,7 @@ namespace proSEOMVC
 
             bundles.Add(new ScriptBundle("~/bundles/ajaxlogin").Include(
                 "~/Scripts/app/ajaxlogin.js"));
-        
+
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/bootstrap*",
                 "~/Scripts/modernizr-*",
@@ -34,7 +37,8 @@ namespace proSEOMVC
                 "~/Scripts/app/datacontext.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-               "~/Content/css/bootstrap.css", "~/Content/css/bootstrap-responsive.css",   "~/Content/css/Site.css"));
+               "~/Content/css/bootstrap.css", "~/Content/css/bootstrap-responsive.css", "~/Content/css/Site.css"));
         }
+
     }
 }

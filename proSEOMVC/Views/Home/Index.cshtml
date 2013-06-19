@@ -1,4 +1,5 @@
-﻿@model proSEOMVC.Models.UserProfile 
+﻿@using System.Web.Optimization
+@model proSEOMVC.Models.UserProfile 
 @{
     ViewBag.Title = "Google Profiles";
 }
@@ -9,10 +10,10 @@
         @Scripts.Render("~/bundles/app")
  
     }
-        <div class="profilecontainer">
-<header>
-    <h1>@ViewBag.Title</h1>
-</header>
+<div class="profilecontainer">
+    <header>
+        <h1>@ViewBag.Title</h1>
+    </header>
 
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -48,20 +49,17 @@
         <button id="btnSubmit" data-bind="click: function(data) { getAnalyticsReport(selectedOptions(),$('option').filter(':selected').html(),$('#startDate').val(),$('#endDate').val()) }">
             Report
         </button>
-        <button id="btnSubmit2" data-bind="click: function(data) { getReport(selectedOptions()) }">
-            Data
+        <button id="btnSubmit2" data-bind="click: function(data) { getPDF(selectedOptions(),$('option').filter(':selected').html(),$('#startDate').val(),$('#endDate').val()) }">
+            PDF
         </button>
         <div data-bind="text: selectedOptions"/>
-        <form id="ProfileSelect" method="POST" action="/Profiles/Detail">
-            <input id="profileID" name="profileID" type="hidden"/>
-        </form>
-    
     </div>
 </div>
-</div>
+<div id="errors"> @ViewBag.Title</div>
 <div id="report-content"></div>
 
 <script type="text/javascript">
+
     var data = @Html.Raw(Json.Encode(Model));
 </script>
 

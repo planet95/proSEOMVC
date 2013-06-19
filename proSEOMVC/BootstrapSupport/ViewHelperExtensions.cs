@@ -47,7 +47,7 @@ namespace BootstrapSupport
 
         public static object GetId(this object model)
         {
-            return model.GetType().GetProperty(model.IdentifierPropertyName()).GetValue(model,new object[0]);
+            return model.GetType().GetProperty(model.IdentifierPropertyName()).GetValue(model, new object[0]);
         }
 
 
@@ -119,14 +119,14 @@ namespace BootstrapSupport
         {
             return propertyInfo.GetCustomAttributes(typeof(T), false).FirstOrDefault() as T;
         }
-		
+
         public static string LabelFromType(Type @type)
         {
             var att = GetAttribute<DisplayNameAttribute>(@type);
-            return att != null ? att.DisplayName 
+            return att != null ? att.DisplayName
                 : @type.Name.ToSeparatedWords();
         }
-		
+
         public static string GetLabel(this Object Model)
         {
             return LabelFromType(Model.GetType());

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace BootstrapSupport.HtmlHelpers
@@ -10,9 +10,9 @@ namespace BootstrapSupport.HtmlHelpers
         //                                   "Back to List",
         //                                   "icon-list")</li>
         // instead of "icon-list", we could also use GlyphIcons.list
-        public static MvcHtmlString ActionLinkWithGlyphIcon(this HtmlHelper helper, 
-            string action, 
-            string text, 
+        public static MvcHtmlString ActionLinkWithGlyphIcon(this HtmlHelper helper,
+            string action,
+            string text,
             string glyphs,
             string tooltip = "",
             IDictionary<string, object> htmlAttributes = null)
@@ -22,8 +22,8 @@ namespace BootstrapSupport.HtmlHelpers
 
             var anchor = new TagBuilder("a");
             anchor.MergeAttribute("href", action);
-            
-            if(!string.IsNullOrEmpty(tooltip))
+
+            if (!string.IsNullOrEmpty(tooltip))
                 anchor.MergeAttributes(
                     new Dictionary<string, object>()
                         {
@@ -33,7 +33,7 @@ namespace BootstrapSupport.HtmlHelpers
                         }
                     );
 
-            if(htmlAttributes != null)
+            if (htmlAttributes != null)
                 anchor.MergeAttributes(htmlAttributes, true);
 
             anchor.InnerHtml = glyph + " " + text;
@@ -41,7 +41,7 @@ namespace BootstrapSupport.HtmlHelpers
             return MvcHtmlString.Create(anchor.ToString());
         }
 
-    #region icon constants
+        #region icon constants
         public const string glass = "icon-glass";
         public const string music = "icon-music";
         public const string search = "icon-search";
@@ -182,6 +182,6 @@ namespace BootstrapSupport.HtmlHelpers
         public const string filter = "icon-filter";
         public const string briefcase = "icon-briefcase";
         public const string fullscreen = "icon-fullscreen";
-#endregion 
+        #endregion
     }
 }

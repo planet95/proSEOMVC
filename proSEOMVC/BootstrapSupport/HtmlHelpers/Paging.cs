@@ -42,8 +42,8 @@ namespace BootstrapSupport.HtmlHelpers
         /// <param name="additionalPagerCssClass">Additional classes for the navigation div (e.g. "pagination-right pagination-mini")</param>
         /// <returns></returns>
         public static MvcHtmlString Pager(this HtmlHelper helper,
-            int currentPage, int totalPages, 
-            Func<int, string> pageUrl, 
+            int currentPage, int totalPages,
+            Func<int, string> pageUrl,
             string additionalPagerCssClass = "")
         {
             if (totalPages <= 1)
@@ -66,7 +66,7 @@ namespace BootstrapSupport.HtmlHelpers
                 a.SetInnerText(i.ToString());
 
                 li.InnerHtml = a.ToString();
-                
+
                 ul.InnerHtml += li;
             }
 
@@ -127,9 +127,9 @@ namespace BootstrapSupport.HtmlHelpers
 
         public static IEnumerable<T> GetPage<T>(this IEnumerable<T> source, int pageIndex, int pageSize)
         {
-            return source.Skip(pageIndex*pageSize).Take(pageSize);
+            return source.Skip(pageIndex * pageSize).Take(pageSize);
         }
-        
+
         // You can create your own paging extension that delegates to your
         // persistence layer such as NHibernate or Entity Framework.
         // This is an example how an `IPagedList<T>` can be created from 
@@ -152,5 +152,5 @@ namespace BootstrapSupport.HtmlHelpers
             return list;
         }
         */
-    }   
+    }
 }

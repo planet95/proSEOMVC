@@ -8,6 +8,26 @@
 
 <html>
     <head>
+        <link href="/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/css/Site.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="/css/print.css" type="text/css" media="print" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.canvas.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.navigate.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.stack.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.threshold.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.image.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.pie.js"></script>
+        <script type="text/javascript" src="/js/jquery.flot.time.js"></script>
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+            <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/cufon/1.09i/cufon-yui.js"></script>
+<script type="text/javascript" src="/fonts/Proxima_Nova_Rg_700.font.js"></script>
+<script type="text/javascript">
+    Cufon.replace('h1, h2, h3, h4, h5, h6', { fontFamily: 'Proxima Nova Rg' });
+</script>
+
         <meta name="viewport" content="width=device-width" />
         <title>Report</title>
     </head>
@@ -15,17 +35,15 @@
         <div id="wrapper" >
         <div class="condensed_wrapper">
             <div id="logo">
-                <br/>
+             
                 <h1>Website</h1>
                 <h2>Analytics</h2>
                 <p class="url">@Html.DisplayFor(model => model.profile.url)</p>
             </div>
             <div id="description_top">
-                <hr>
+                <hr/>
                 <h3>Executive Summary <span class="blue">@String.Format("{0:M/dd}", Model.profile.startDate) - @String.Format("{0:M/dd}", Model.profile.endDate)</span></h3><hr />
-                <p>Your website is optimized for 
-                    the targeted area of KnockOUTCITY HERE as well as the state itself. 
-                    In your first quarter, your website saw <span class="blue">@Html.DisplayFor(model => model.TotalVisits)&nbsp;</span>visits with a total of <span class="blue">@Html.DisplayFor(model => model.TotalPageViews)</span>
+                <p> In your first quarter, your website saw <span class="blue">@Html.DisplayFor(model => model.TotalVisits)&nbsp;</span>visits with a total of <span class="blue">@Html.DisplayFor(model => model.TotalPageViews)</span>
                     pageviews. <span class="blue">@Html.DisplayFor(model => model.googleRef )</span> 
                     visits came from Google organic traffic and <span class="blue">@Html.DisplayFor(model => model.directRef)</span> visits came from direct traffic (users that type in your exact domain name).
                     The average bounce rate (visitors who landed on your website and left shortly after) was <span class="blue">@Html.DisplayFor(model => model.BounceRate).</span>
@@ -37,35 +55,33 @@
         <div class="clear"></div>
         <div class="featured">
             <h6>The graphics below illustrate traffic sources and their percentages for the quarter</h6>
-            <div class="pie_chart" style="height:150px; width:175px;">   
-                Html5 PiChart Here              </div>
+            <div class="pie_chart" style="height:150px; width:175px;"></div>
             <div class="referring_cities"><!-- <img src="content/images/referring_map.png" height="158" width="82" alt="Referring Cities" align="right" />-->
-                <div class="data_title"> Referring Cities Count</div><br/>
-                @foreach (var item in Model.topCity)
+                <div class="data_title"> Search Traffic Sources</div><br/>
+                @foreach (var item in Model.topRef)
                 {
-                  <span class="data_values">@String.Format("-- {0}" + " Views",item.Value)</span><span class="data_names">@String.Format("{0}",item.Key)</span><br/>
-                    
+                  <span class="data_values">@String.Format("-- {0}" + " Views",item.Value)</span><span class="data_names">@String.Format("{0}",item.Key)</span><br/> 
                 }
             </div>   
             <div class="clear"></div>
         </div>
-        <div class="featured_bottom"> <img src="content/images/box_bottom_right.png" height="9" width="20" align="right" /><img src="content/images/box_bottom_left.png" height="9" width="20" align="left" /></div>
+        <div class="featured_bottom"> <img src="/images/box_bottom_right.png" height="9" width="20" align="right" /><img src="/images/box_bottom_left.png" height="9" width="20" align="left" /></div>
         <div class="clear"></div>
         <div class="break">&nbsp;</div>
         <div class="condensed_wrapper">
             
                 
-                       <div class="r_wrapper_right">
-                             <div class="data_title"> TOP 5 REFERRAL CITIES</div>
-                                           @foreach (var item in Model.topCity)
-                {
-                 <span class="data_values">@String.Format("{0}" + " Views",item.Value)</span><span  class="data_names">@String.Format("{0}",item.Key)</span><br/>
+            <div class="r_wrapper_right">
+            <div class="data_title">TOP 3 REFERRAL CITIES</div>
+                                        @foreach (var item in Model.topCity)
+            {
+                <span class="data_values">@String.Format("{0}" + " Views",item.Value)</span><span  class="data_names">@String.Format("{0}",item.Key)</span><br/>
                        
-                }
-        </div>
+            }
+            </div>
             <div class="r_wrapper_left">
-                <div class="data_title"> SOURCE</div>
-                @foreach (var item in Model.topRef)
+                <div class="data_title">TOP VIEWED PAGES</div>
+                @foreach (var item in Model.topPages)
                 {
                     <span class="data_values">@String.Format("{0}" + " Views",item.Value)</span><span  class="data_names">@String.Format("{0}",item.Key)</span><br/>
                     
@@ -78,14 +94,13 @@
                     <div class="month_past">@String.Format("{0:MMM dd}", Model.profile.startDate) Traffic</div>
                 </div>
                 <div class="splinechart" style="height:150px; z-index:0;">
-                    SplineChart Here
            
                 </div>
 
                  </div>
                 <div class="r_wrapper_right">
                     <div class="data_title"> THE TOP LANDING PAGES</div>
-                          @foreach (var item in Model.topPage.Take(5))
+                          @foreach (var item in Model.topLandingPage.Take(5))
                 {
                   <span class="data_values">@String.Format("{0}" + " Views",item.Value)</span><span  class="data_names">@String.Format("{0}",item.Key)</span><br/>
                      
@@ -105,7 +120,7 @@
                     <div id="footer">
                         <div class="footer_right"></div>
                         <div class="footer_left"></div>
-                        <h4>Powered by <a href="http://390625.blogspot.com/" target="_blank">Code-E</a></h4>
+                        <h4><a href="http://390625.blogspot.com/">Powered by Code - E</a></h4>
                     </div>
                     <br clear="all" />
                 </div>
@@ -119,27 +134,30 @@
     var jsonData = @Html.Raw(Model.jsondayList);
     var totalReturningVisitors = @Html.Raw(Model.TotalReturningVisitors);
     var totalNewVisitors = @Html.Raw(Model.TotalNewVisitors);
-               $(function() {
-                   var d3 = [];
-                   var d4 = [
-                       { label: "Returning Visitors", data: totalReturningVisitors },
-                       { label: "New Visitors", data: totalNewVisitors }];
+    var refData = @Html.Raw(Json.Encode(Model.topRef));
+    $(function() {
+        var d3 = [];
+        var d4 = [];
+            //{ label: "Returning Visitors", data: totalReturningVisitors },
+            //{ label: "New Visitors", data: totalNewVisitors }];
+        $.each(refData, function(key, value) {
+            d4.push([key, value]);
+        });
+        for(var a = 0; a <= 15; a++) {
+            d3.push([
+            jsonData[a].DateTime,
+            jsonData[a].Value]);
+        }
+        $.plot($(".pie_chart"), d4,{
+            series: {
+                pie: { 
+                    show: true
+                }
+            }
+        });
+        $.plot(".splinechart", [d3],{xaxis:{mode:"time"}, spline:"true"});
 
-                            for(var a = 0; a <= 15; a++) {
-                                d3.push([
-                                jsonData[a].DateTime,
-                                jsonData[a].Value]);
-                            }
-                            $.plot($(".pie_chart"), d4,{
-                                series: {
-                                    pie: { 
-                                        show: true
-                                    }
-                                }
-                            });
-                            $.plot(".splinechart", [d3],{xaxis:{mode:"time"}, spline:"true"});
-
-                            // Add the Flot version string to the footer
-                           // $("#footer").prepend("Flot " + $.plot.version  +" &ndash; ");
-                        });
+        // Add the Flot version string to the footer
+    //     $("#footer").prepend("Flot " + $.plot.version  +" &ndash; ");
+    });
                     </script>

@@ -4,6 +4,6 @@ namespace NavigationRoutes
 {
     public interface INavigationRouteFilter
     {
-        bool  ShouldRemove(Route navigationRoutes);
+        bool ShouldRemove(Route navigationRoutes);
     }
 }
