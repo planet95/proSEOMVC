@@ -13,6 +13,10 @@ body {
 .pie_chart {
     height: 150px;
     width: 175px;
+    width: 175px;
+	margin-top: 25px;
+	margin-left: 105px;
+    position: relative;
     padding-left: 25px;
     padding-top: 10px;
 }
